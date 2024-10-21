@@ -167,8 +167,8 @@ public class LivroControllerTest {
     }
 
     @Test
-    public void testBuscarLivroGoogle() throws Exception {
-        String titulo = "O Pequeno Príncipe";
+    public void LivroRetornaBuscarLivroGoogle() throws Exception {
+        String titulo = "OPequenoPríncipe";
         String apiResposta = "{ \"items\": [ { \"volumeInfo\": { \"title\": \"O Pequeno Príncipe\" } } ] }";
 
         when(googleApiService.buscarLivroGoogle(titulo)).thenReturn(apiResposta);
@@ -182,8 +182,8 @@ public class LivroControllerTest {
     }
 
     @Test
-    public void testAdicionarLivroGoogle() throws Exception {
-        String titulo = "O Pequeno Príncipe";
+    public void LivroAdicionaLivroGoogle() throws Exception {
+        String titulo = "OPequenoPríncipe";
         String id = "1D9KEAAAQBAJ";
         String apiResposta = "{ \"items\": [ { \"id\": \"1D9KEAAAQBAJ\", \"volumeInfo\": { \"title\": \"O Pequeno Príncipe\", \"authors\": [\"Antoine de Saint-Exupéry\"], \"industryIdentifiers\": [ { \"identifier\": \"1234567890\" } ], \"publishedDate\": \"1943-04-06\", \"categories\": [\"Fiction\"] } } ] }";
 
