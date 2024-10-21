@@ -147,7 +147,6 @@ public class EmprestimoServiceTest {
     @Test
     public void emprestimoAtualizado() {
         EmprestimoDto emprestimoDto = EmprestimoDto.builder()
-                .dataEmprestimo(LocalDate.parse("2023-01-01"))
                 .dataDevolucao(LocalDate.parse("2023-01-20"))
                 .usuarioId(1)
                 .livroId(1)
@@ -172,7 +171,7 @@ public class EmprestimoServiceTest {
     @Test
     public void dataEmprestimoIncorreta(){
         EmprestimoDto emprestimoDto = EmprestimoDto.builder()
-                .dataEmprestimo(LocalDate.parse("2024-10-21"))
+                .dataEmprestimo(LocalDate.parse("2024-10-30"))
                 .dataDevolucao(LocalDate.parse("2024-10-27"))
                 .usuarioId(1)
                 .livroId(1)

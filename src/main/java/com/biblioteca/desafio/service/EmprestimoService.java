@@ -65,9 +65,6 @@ public class EmprestimoService {
         Optional<Emprestimo> optionalEmprestimo = repository.findById(id);
 
         if(optionalEmprestimo.isPresent()){
-            if(dto.dataEmprestimo().isAfter(LocalDate.now())){
-                throw new IllegalArgumentException("A data do empréstimo não pode ser posterior a hoje.");
-            }else{
                 Emprestimo emprestimo = optionalEmprestimo.get();
 
                 Usuario usuario = usuarioRepository.findById(dto.usuarioId())
@@ -78,14 +75,13 @@ public class EmprestimoService {
 
                 emprestimo.setUsuarioId(usuario);
                 emprestimo.setLivroId(livro);
-                emprestimo.setDataEmprestimo(emprestimo.getDataEmprestimo());
                 emprestimo.setDataDevolucao(dto.dataDevolucao());
                 emprestimo.setStatus(dto.status());
 
                 return repository.save(emprestimo);
-            }
-        }else
+            }else{
             throw new IllegalArgumentException("Emprestimo não encontrado.");
+        }
     }
 
     public List<Livro> recomendarLivro(Integer id){

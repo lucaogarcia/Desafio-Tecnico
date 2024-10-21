@@ -127,8 +127,14 @@ public class UsuarioServiceTest {
 
     @Test
     public void DataCadastroIncorreta(){
+        usuarioDto = UsuarioDto.builder()
+                .nome("Jose Almeida")
+                .email("jose@gmail.com")
+                .dataCadastro(LocalDate.parse("2024-10-30"))
+                .telefone("44987612346").build();
         try {
             usuarioService.criarUsuario(usuarioDto);
+            fail();
         }catch (Exception e){
             assertEquals("A data de cadastro não pode ser posterior a hoje.",e.getMessage());
             Assertions.assertThat((Usuario) null).isNull();
