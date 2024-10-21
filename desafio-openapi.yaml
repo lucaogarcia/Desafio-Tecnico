@@ -1,0 +1,418 @@
+openapi: "3.1.0"
+info:
+  title: "desafio API"
+  description: "desafio API"
+  version: "1.0.0"
+servers:
+  - url: "https://desafio"
+paths:
+  /usuario/{id}:
+    put:
+      summary: "PUT usuario/{id}"
+      operationId: "atualizarUsuario"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UsuarioDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Usuario"
+    delete:
+      summary: "DELETE usuario/{id}"
+      operationId: "apagarUsuario"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET usuario/{id}"
+      operationId: "encontrarPorId"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Usuario"
+  /usuario:
+    post:
+      summary: "POST usuario"
+      operationId: "criarUsuario"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UsuarioDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Usuario"
+    get:
+      summary: "GET usuario"
+      operationId: "listarTodos"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Usuario"
+  /livro/{id}:
+    put:
+      summary: "PUT livro/{id}"
+      operationId: "atualizarLivro"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LivroDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Livro"
+    delete:
+      summary: "DELETE livro/{id}"
+      operationId: "apagarLivro"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Void"
+    get:
+      summary: "GET livro/{id}"
+      operationId: "encontrarPorId"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Livro"
+  /livro:
+    post:
+      summary: "POST livro"
+      operationId: "criarLivro"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LivroDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Livro"
+    get:
+      summary: "GET livro"
+      operationId: "listarTodos"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Livro"
+  /livro/adicionarLivroGoogle/{titulo}/{id}:
+    post:
+      summary: "POST livro/adicionarLivroGoogle/{titulo}/{id}"
+      operationId: "adicionarLivroGoogle"
+      parameters:
+        - name: "titulo"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Livro"
+  /livro/buscarLivroGoogle/{titulo}:
+    get:
+      summary: "GET livro/buscarLivroGoogle/{titulo}"
+      operationId: "buscarLivroGoogle"
+      parameters:
+        - name: "titulo"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "string"
+  /emprestimo/{id}:
+    put:
+      summary: "PUT emprestimo/{id}"
+      operationId: "atualizarEmprestimo"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmprestimoDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Emprestimo"
+    get:
+      summary: "GET emprestimo/{id}"
+      operationId: "encontrarPorId"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Emprestimo"
+  /emprestimo:
+    post:
+      summary: "POST emprestimo"
+      operationId: "criarEmprestimo"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmprestimoDto"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Emprestimo"
+    get:
+      summary: "GET emprestimo"
+      operationId: "listarTodos"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Emprestimo"
+  /emprestimo/recomendarLivro/{id}:
+    get:
+      summary: "GET emprestimo/recomendarLivro/{id}"
+      operationId: "recomendarLivro"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int32"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Livro"
+components:
+  schemas:
+    UsuarioDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        nome:
+          type: "string"
+        email:
+          type: "string"
+        dataCadastro:
+          type: "string"
+          format: "date"
+        telefone:
+          type: "string"
+    Usuario:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        nome:
+          type: "string"
+        email:
+          type: "string"
+        dataCadastro:
+          type: "string"
+          format: "date"
+        telefone:
+          type: "string"
+    Void:
+      type: "object"
+      properties: { }
+    LivroDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        titulo:
+          type: "string"
+        autor:
+          type: "string"
+        isbn:
+          type: "string"
+        dataPublicacao:
+          type: "string"
+          format: "date"
+        categoria:
+          type: "string"
+    Livro:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        titulo:
+          type: "string"
+        autor:
+          type: "string"
+        isbn:
+          type: "string"
+        dataPublicacao:
+          type: "string"
+          format: "date"
+        categoria:
+          type: "string"
+    EmprestimoDto:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        usuarioId:
+          type: "integer"
+          format: "int32"
+        livroId:
+          type: "integer"
+          format: "int32"
+        dataEmprestimo:
+          type: "string"
+          format: "date"
+        dataDevolucao:
+          type: "string"
+          format: "date"
+        status:
+          type: "boolean"
+    Emprestimo:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int32"
+        usuarioId:
+          $ref: "#/components/schemas/Usuario"
+        livroId:
+          $ref: "#/components/schemas/Livro"
+        dataEmprestimo:
+          type: "string"
+          format: "date"
+        dataDevolucao:
+          type: "string"
+          format: "date"
+        status:
+          type: "boolean"
